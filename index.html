@@ -11,14 +11,11 @@
       font-family: Helvetica, Arial, FreeSans, san-serif;
     }
     code {
-      display: block;
       font: monospace;
-      white-space: pre;
       border: 1px dotted #666;
       color: #00FF00;
       background-color: #333;
       padding: 5px;
-      margin: 10px 0;
     }
     iframe {
       vertical-align: middle;
@@ -34,38 +31,31 @@
 <p>CSS rules can refer to 3 things: tag name, id, or class.</p>
 
 <h2>Tag names</h2>
-
 <p>Like body, h1, h2, h3, p, span, a, img</p>
-
-<iframe style="width: 400px; height: 300px" src="http://jsfiddle.net/H9jSx/embedded/css/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-+
-<iframe style="width: 300px; height: 300px" src="http://jsfiddle.net/H9jSx/embedded/html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-=
-<iframe style="width: 300px; height: 300px" src="http://jsfiddle.net/H9jSx/embedded/result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-
+<iframe style="width: 400px; height: 300px" src="http://jsfiddle.net/H9jSx/embedded/css,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 <h2>#id</h2>
-
 <p>Only one element can have a particular id.</p>
-
 <iframe style="width: 400px; height: 300px" src="http://jsfiddle.net/DgmXm/1/embedded/css,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 <h2>.class</h2>
-
 <p>Many elements can have the same class. Each element can have more than one class.</p>
-
 <iframe style="width: 400px; height: 300px" src="http://jsfiddle.net/tbFpt/1/embedded/css,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 <h2>All together now</h2>
-
 <p>You can refer to an element with any combination of tag name, id, and class.</p>
-
 <iframe style="width: 400px; height: 300px" src="http://jsfiddle.net/jzz8g/1/embedded/css,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
 <h1>JavaScript + JQuery</h1>
 
 <p>JQuery makes it easy to select and change elements on the page.</p>
+
+<h2>$()</h2>
+<p><code>$("")</code> will match all elements in the same way that CSS rules work:</p>
+<ul>
+<li>tag name: <code>$("a")</code> gets all links</li>
+<li>id: <code>$("#maintitle")</code> gets the one element that has <code>id="maintitle"</code></li>
+<li>class: <code>$(".classname")</code> gets all elements that have <code>class="classname"</code></li>
+</ul>
 
 <h2>text()</h2>
 
