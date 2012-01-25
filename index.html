@@ -30,7 +30,6 @@
 <p>Like body, h1, h2, h3, p, a, img</p>
 
 <code>
-
   &lt;style&gt;
     a {
       /* all links will be red */
@@ -41,27 +40,46 @@
       color: #0000FF;
     }
   &lt;/style&gt;
-
 </code>
 
-<h2>id</h2>
+<h2>#id</h2>
 
-<p>When you need to find one thing on the page</p>
+<p>Only one element can have a particular id.</p>
 
 <code>
-
   &lt;style&gt;
-    a {
-      /* all links will be red */
-      color: #FF0000;
-    }
-    a:hover {
-      /* all links will be blue when the mouse is over */
-      color: #0000FF;
+    #maintitle {
+      font-size: 25px;
     }
   &lt;/style&gt;
-
 </code>
+
+<code>
+  &lt;h1 id="maintitle"&gt;This is the main title of the page.&lt;/h1&gt;
+</code>
+
+<h2>.class</h2>
+
+<p>Many elements can have the same sytle. Each element can have more than one style.</p>
+
+<code>
+  &lt;style&gt;
+    .large {
+      font-size: 25px;
+    }
+    .blue {
+      color: 25px;
+    }
+  &lt;/style&gt;
+</code>
+
+<code>
+  &lt;p class="large"&gt;This is large.&lt;/h1&gt;
+  &lt;p class="blue"&gt;This is blue.&lt;/h1&gt;
+  &lt;p class="large blue"&gt;This is large and blue.&lt;/h1&gt;
+</code>
+
+<h1>JavaScript + JQuery</h1>
 
 
 
