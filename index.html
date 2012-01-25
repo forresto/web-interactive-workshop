@@ -28,6 +28,29 @@
 
 <body>
 
+<h1>Basic Page Structure</h1>
+
+<code><pre>
+
+&lt;!DOCTYPE html>
+&lt;html lang="en-US">
+  &lt;head>
+    &lt;title>Page Title&lt;/title>
+    &lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">&lt;/script>
+  &lt;/head>
+  &lt;body>
+  
+    &lt;p>Hello.&lt;/p>
+    
+    &lt;script type="text/javascript">
+      $("p").text("Hello World!!!")
+    &lt;/script>
+    
+  &lt;/body>
+&lt;/html>
+
+</pre></code>
+
 <h1>CSS</h1>
 
 <p>CSS rules can refer to 3 things: tag name, id, or class.</p>
@@ -59,13 +82,18 @@
 <li>class: <code>$(".classname")</code> gets all elements that have <code>class="classname"</code></li>
 </ul>
 
+<h2>click()</h2>
+
+<h2>hide(), show(), toggle()</h2>
+
+<p><code>toggle("slow")</code> takes 600ms, <code>toggle("fast")</code> takes 200ms, <code>toggle(2500)</code> takes 2.5s</p>
+
 <h2>text()</h2>
 
 <h2>addclass() and removeClass()</h2>
 
 <h2>css()</h2>
 
-<h2>click()</h2>
 
 
 </body>
