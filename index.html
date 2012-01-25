@@ -15,6 +15,10 @@
       font: monospace;
       white-space: pre;
       border: 1px dotted #666;
+      color: #00FF00;
+      background-color: #333;
+      padding: 5px;
+      margin: 10px 0;
     }
   </style>
 </head>
@@ -41,6 +45,11 @@
     }
   &lt;/style&gt;
 </code>
++
+<code>
+  &lt;h1 id="maintitle"&gt;This is the main title of the page.&lt;/h1&gt;
+</code>
+=
 
 <h2>#id</h2>
 
@@ -53,10 +62,11 @@
     }
   &lt;/style&gt;
 </code>
-
++
 <code>
   &lt;h1 id="maintitle"&gt;This is the main title of the page.&lt;/h1&gt;
 </code>
+=
 
 <h2>.class</h2>
 
@@ -68,16 +78,39 @@
       font-size: 25px;
     }
     .blue {
-      color: 25px;
+      color: #0000FF;
     }
   &lt;/style&gt;
 </code>
-
++
 <code>
   &lt;p class="large"&gt;This is large.&lt;/h1&gt;
   &lt;p class="blue"&gt;This is blue.&lt;/h1&gt;
   &lt;p class="large blue"&gt;This is large and blue.&lt;/h1&gt;
 </code>
+=
+
+<h2>All together now</h2>
+
+<p>You can refer to an element with any combination of tag name, id, and class.</p>
+
+<code>
+  &lt;style&gt;
+    h1#maintitle {
+      font-size: 25px;
+    }
+    p.date {
+      font-style: italic;
+    }
+  &lt;/style&gt;
+</code>
++
+<code>
+  &lt;h1 id="maintitle"&gt;This is large.&lt;/h1&gt;
+  
+  &lt;p class="date"&gt;2012.01.25&lt;/h1&gt;
+</code>
+=
 
 <h1>JavaScript + JQuery</h1>
 
