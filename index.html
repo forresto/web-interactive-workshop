@@ -5,6 +5,8 @@
 
   <title>forresto/web-interactive-workshop @ GitHub</title>
 
+  <link href='http://fonts.googleapis.com/css?family=Sofia' rel='stylesheet' type='text/css'>
+  
   <style type="text/css">
     body {
       margin-top: 1.0em;
@@ -22,6 +24,9 @@
     iframe {
       vertical-align: middle;
       border: 1px dotted #AAA;
+    }
+    .specialfont{
+      font-family: 'Sofia', cursive;
     }
   </style>
 </head>
@@ -78,6 +83,26 @@
 <h2>All together now</h2>
 <p>You can refer to an element with any combination of tag name, id, and class.</p>
 <iframe style="width: 400px; height: 300px" src="http://jsfiddle.net/jzz8g/1/embedded/css,html,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+
+<h1 class="specialfont" style="font-weight:normal;font-size:40px;">Web fonts</h1>
+
+<p><a href="https://typekit.com/">Typekit</a> costs, <a href="http://www.google.com/webfonts">Google Web Fonts</a> are free.</p>
+
+<p>In your page's head:</p>
+
+<code><pre>&lt;link href='http://fonts.googleapis.com/css?family=Sofia' rel='stylesheet' type='text/css'></pre></code>
+
+<p>In the css:</p>
+
+<code><pre>.specialfont{
+  font-family: 'Sofia', cursive;
+}</pre></code>
+
+
+
+
+
 <h1>JavaScript + JQuery</h1>
 
 <p>JQuery makes it easy to select and change elements on the page.</p>
