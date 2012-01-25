@@ -10,6 +10,11 @@
       margin-top: 1.0em;
       font-family: Helvetica, Arial, FreeSans, san-serif;
     }
+    code {
+      font: monospace;
+      white-space: pre;
+      border: 1px dotted #666;
+    }
   </style>
 </head>
 
@@ -21,18 +26,42 @@
 
 <h2>Tag names</h2>
 
-<p>Like body, h1, h2, h3, p, a, img<p>
+<p>Like body, h1, h2, h3, p, a, img</p>
 
 <code>
 
   &lt;style&gt;
     a {
-      /* all links */
+      /* all links will be red */
       color: #FF0000;
+    }
+    a:hover {
+      /* all links will be blue when the mouse is over */
+      color: #0000FF;
     }
   &lt;/style&gt;
 
 </code>
+
+<h2>id</h2>
+
+<p>When you need to find one thing on the page</p>
+
+<code>
+
+  &lt;style&gt;
+    a {
+      /* all links will be red */
+      color: #FF0000;
+    }
+    a:hover {
+      /* all links will be blue when the mouse is over */
+      color: #0000FF;
+    }
+  &lt;/style&gt;
+
+</code>
+
 
 
 </body>
