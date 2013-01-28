@@ -139,5 +139,36 @@
 <iframe style="width: 500px; height: 400px" src="http://jsfiddle.net/xSA56/3/embedded/js,html,css,result/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 
+
+
+
+<h1>Processing.js</h1>
+
+If you want to embed your (Java) Processing sketches directly using Processing.js:
+
+<pre><code>
+&lt;!DOCTYPE html>
+  &lt;html>
+  &lt;head>
+    &lt;title>Hello Web - Processing.js Test&lt;/title>
+    &lt;script src="processing-1.4.1.min.js">&lt;/script>
+  &lt;/head>
+  &lt;body>
+    &lt;h1>Processing.js Test&lt;/h1>
+    &lt;p>This is my first Processing.js web-based sketch:&lt;/p>
+    &lt;canvas data-processing-sources="hello-web.pde">&lt;/canvas>
+  &lt;/body>
+&lt;/html>
+</code></pre>
+
+<h1>Just use &lt;canvas&gt;</h1>
+
+Drawing with pure JavaScript to the canvas isn't much more complicated than Processing.
+
+<h2>Static</h2>
+
+<h3>Animated</h3>
+
+
 </body>
 </html>
