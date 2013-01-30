@@ -37,8 +37,8 @@ canvas.height = window.innerHeight;
 var mouseX = 0;
 var mouseY = 0;
 canvas.onmousemove = function (e) {
-    mouseX = e.pageX - this.offsetLeft;
-    mouseY = e.pageY - this.offsetTop;
+    mouseX = e.pageX - canvas.offsetLeft;
+    mouseY = e.pageY - canvas.offsetTop;
 };
 
 // If you want to use mousePressed
@@ -54,13 +54,12 @@ canvas.onmouseup = function (e) {
 // If you want to use mouse things with touchscreens as well
 canvas.ontouchmove = function(e){
     e.preventDefault();
-    var touch = e.touches[0]; // Get the information for finger #1
-    mouseX = touch.pageX - this.offsetLeft;
-    mouseY = touch.pageY - this.offsetTop;
-    mousePressed = true;
+    mouseX = e.targetTouches[0].pageX - canvas.offsetLeft;
+    mouseY = e.targetTouches[0].pageY - canvas.offsetTop;
 }
 canvas.ontouchstart = function (e) {
     mousePressed = true;
+    canvas.ontouchmove(e);
 };
 canvas.touchend = function (e) {
     mousePressed = false;
