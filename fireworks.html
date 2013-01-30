@@ -54,6 +54,7 @@ canvas.onmouseup = function (e) {
 // If you want to use mouse things with touchscreens as well
 canvas.ontouchmove = function(e){
     e.preventDefault();
+    // Just looks at first finger
     mouseX = e.targetTouches[0].pageX - canvas.offsetLeft;
     mouseY = e.targetTouches[0].pageY - canvas.offsetTop;
 }
@@ -61,7 +62,7 @@ canvas.ontouchstart = function (e) {
     mousePressed = true;
     canvas.ontouchmove(e);
 };
-canvas.touchend = function (e) {
+canvas.ontouchend = function (e) {
     mousePressed = false;
 };
 
