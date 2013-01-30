@@ -53,10 +53,10 @@ canvas.onmouseup = function (e) {
 
 // If you want to use mouse things with touchscreens as well
 canvas.ontouchmove = function(e){
+    e.preventDefault();
     var touch = e.touches[0]; // Get the information for finger #1
-    var node = touch.target; // Find the node the drag started from
-    mouseX = e.pageX - this.offsetLeft;
-    mouseY = e.pageY - this.offsetTop;
+    mouseX = touch.pageX - this.offsetLeft;
+    mouseY = touch.pageY - this.offsetTop;
     mousePressed = true;
 }
 canvas.ontouchstart = function (e) {
