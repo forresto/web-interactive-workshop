@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>touch test</title>
+  
+  <script type='text/javascript' src='/js/lib/dummy.js'></script>
+  <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+window.onload=function(){
+/*
+    Color array and object array drawing
+*/
+
+var canvas = document.getElementById("drawing");
+context = canvas.getContext("2d");
+
+// p.size(400, 400);
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+
+// If you want to use mouseX and mouseY
+var mouseX = 0;
+var mouseY = 0;
+canvas.onmousemove = function (e) {
+    mouseX = e.pageX - this.offsetLeft;
+    mouseY = e.pageY - this.offsetTop;
+};
+
+// If you want to use mousePressed
+var mousePressed = false;
+canvas.onmousedown = function (e) {
+    mousePressed = true;
+};
+canvas.onmouseup = function (e) {
+    mousePressed = false;
+};
+
+
+// If you want to use mouse things with touchscreens as well
+canvas.ontouchmove = function(e){
+    var touch = e.touches[0]; // Get the information for finger #1
+    var node = touch.target; // Find the node the drag started from
+    mouseX = e.pageX - this.offsetLeft;
+    mouseY = e.pageY - this.offsetTop;
+    mousePressed = true;
+}
+canvas.ontouchstart = function (e) {
+    mousePressed = true;
+};
+canvas.touchend = function (e) {
+    mousePressed = false;
+};
+
+
+
+var colors = [];
+colors.push("rgba(255, 200, 100, 0.25)");
+colors.push("rgba(200, 100, 150, 0.25)");
+colors.push("hsla(240, 100%, 75%, 0.25)");
+colors.push("hsla(240, 100%, 75%, 0.25)");
+
+var squares = [];
+
+var i = 0;
+while (i < 100) {
+    var square = {};
+    square.x = Math.random() * canvas.width;
+    square.y = Math.random() * canvas.height;
+    square.size = Math.random() * 25 + 5;
+    square.speedX = 4 - Math.random() * 8;
+    square.speedY = 4 - Math.random() * 8;
+
+    var index = i % colors.length;
+    square.color = colors[index];
+
+    squares.push(square);
+
+    i++;
+}
+
+var draw = function () {
+    for (var i = 0; i < squares.length; i++) {
+        var square = squares[i];
+        context.fillStyle = square.color;
+        context.fillRect(square.x, square.y, square.size, square.size);
+        if (mousePressed) {
+            square.x = mouseX;
+            square.y = mouseY;
+        } else {
+            square.x += square.speedX;
+            square.y += square.speedY;
+            if (square.x > canvas.width) {
+                square.x = 0;
+            }
+            if (square.x < 0) {
+                square.x = canvas.width;
+            }
+            if (square.y > canvas.height) {
+                square.y = 0;
+            }
+            if (square.y < 0) {
+                square.y = canvas.height;
+            }
+        }
+    }
+};
+
+setInterval(draw, 1000/60);
+
+}//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <canvas id="drawing"></canvas>
+</body>
+</html>
