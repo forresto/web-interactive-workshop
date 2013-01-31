@@ -48,15 +48,22 @@ This is not a library: just use the parts you need!
     canvas.ontouchmove = function (e) {
       // Don't scroll
       e.preventDefault();
+
       // Just looks at first finger
       mouseX = e.targetTouches[0].pageX - canvas.offsetLeft;
       mouseY = e.targetTouches[0].pageY - canvas.offsetTop;
     }
     canvas.ontouchstart = function (e) {
+      // Don't select
+      e.preventDefault();
+
       mousePressed = true;
       canvas.ontouchmove(e);
     };
     canvas.ontouchend = function (e) {
+      // Don't select
+      e.preventDefault();
+      
       mousePressed = false;
     };
 
