@@ -131,15 +131,25 @@ var gameTick = function () {
         context.fillRect(enemy.x, enemy.y, 5, 5);
         // Is this enemy within player x?
         if (enemy.x > player.x - 20 && enemy.x < player.x + 20) {
-            // Is this enemy within player y?
+            // And is this enemy within player y?
             if (enemy.y > player.y - 20 && enemy.y < player.y + 20) {
+                // Then game over.
                 gameOver();
             }
+        }
+
+        // Is this enemy to the left of the screen?
+        if (enemy.x < 0) {
+            // Move it to the right of the screen
+            enemy.x = canvas.width + Math.random()*50;
+            // with a random y
+            enemy.y = Math.random() * canvas.height;
         }
     }
 
     // Is the player hitting the floor or ceiling? 
     if (player.y < 0 || player.y > canvas.height) {
+        // Then game over.
         gameOver();
     }
 };

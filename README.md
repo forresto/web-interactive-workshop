@@ -153,7 +153,11 @@ This is not a library: just use the parts you need!
           x = canvas.width;
           xSpeed = -xSpeed;
         }
-        if (x  canvas.height) {
+        if (x < 0){
+          x = 0;
+          xSpeed = -xSpeed;
+        }
+        if (y > canvas.height) {
           y = canvas.height;
           ySpeed = -ySpeed;
         }
