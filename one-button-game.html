@@ -36,10 +36,11 @@ canvas.onmouseup = function (e) {
 
 // If you want to use these mouse variables with touchscreens as well
 canvas.ontouchstart = function (e) {
+    e.preventDefault();
     mousePressed = true;
-    canvas.ontouchmove(e);
 };
 canvas.ontouchend = function (e) {
+    e.preventDefault();
     mousePressed = false;
 };
 
