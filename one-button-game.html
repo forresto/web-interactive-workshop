@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<!-- Made without libraries! http://softwarestudies.mlog.taik.fi/2013/01/30/processing-not-processing/ -->
+
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>One Button Game</title>
+    
+  <style type='text/css'>
+    #points {
+        text-align: center;
+    }
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+window.onload=function(){
+
+var canvas = document.getElementById("drawing");
+context = canvas.getContext("2d");
+
+// p.size(400, 400);
+canvas.width = 400;
+canvas.height = 400;
+
+// If you want to use mousePressed
+var mousePressed = false;
+canvas.onmousedown = function (e) {
+    mousePressed = true;
+};
+canvas.onmouseup = function (e) {
+    mousePressed = false;
+};
+
+// If you want to use these mouse variables with touchscreens as well
+canvas.ontouchstart = function (e) {
+    mousePressed = true;
+    canvas.ontouchmove(e);
+};
+canvas.ontouchend = function (e) {
+    mousePressed = false;
+};
+
+
+
+var GRAVITY = 0.1;
+var points = 0;
+var playing = false;
+
+// Setup player
+var player = {};
+player.x = canvas.width / 2;
+player.y = canvas.width / 2;
+player.speed = 0;
+
+// Load image
+var playerImage = new Image();
+playerImage.src = "one-button-game-player.jpg";
+
+// The enemies array
+var enemies = [];
+// Place enemies randomly to right of screen
+var setupEnemies = function (count) {
+    enemies = [];
+    for (var i = 0; i < count; i++) {
+        var enemy = {};
+        enemy.x = canvas.width + Math.random() * canvas.width;
+        enemy.y = Math.random() * canvas.height;
+        enemy.speed = -1;
+        enemies.push(enemy);
+    }
+};
+// Set them up for the first game
+setupEnemies(10);
+
+// This was a series of strokeRect but I changed it to a drawImage 
+var drawPlayer = function (x, y) {
+    //context.fillStyle = "white";
+    //context.fillRect(x, y, 50, 50);
+    //context.strokeStyle = "blue";
+    //context.strokeRect(x, y, 50, 50);
+    //context.strokeRect(x + 10, y + 10, 10, 10);
+    //context.strokeRect(x + 30, y + 10, 10, 10);
+
+    // Image is 48x48, subtract 24 to make it centered
+    context.drawImage(playerImage, x-24, y-24, 48, 48);
+};
+
+// Reset all of the stuff that needs to be reset on game over
+var gameOver = function () {
+    player.y = canvas.width / 2;
+    player.speed = 0;
+    points = 0;
+
+    context.fillStyle = "red";
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    playing = false;
+    
+    setupEnemies(10);
+};
+
+// Do all of the game logic for each tick (frame of animation)
+var gameTick = function () {
+    var acceleration = GRAVITY;
+    if (mousePressed) {
+        // Push the player up
+        acceleration = 0 - GRAVITY;
+    }
+    // Speed changes by acceleration
+    player.speed += acceleration;
+    // Then y position changes by speed
+    player.y += player.speed;
+
+    // Draw the player in new position
+    drawPlayer(player.x, player.y);
+
+    // One point per animation frame
+    points++;
+    document.getElementById("points").innerHTML = points;
+
+    // Go through enemies array
+    for (var i = 0; i < enemies.length; i++) {
+        // Look at one enemy from array
+        var enemy = enemies[i];
+        // Move this enemy
+        enemy.x += enemy.speed;
+        // Draw this enemy
+        context.fillStyle = "black";
+        context.fillRect(enemy.x, enemy.y, 5, 5);
+        // Is this enemy within player x?
+        if (enemy.x > player.x - 20 && enemy.x < player.x + 20) {
+            // Is this enemy within player y?
+            if (enemy.y > player.y - 20 && enemy.y < player.y + 20) {
+                gameOver();
+            }
+        }
+    }
+
+    // Is the player hitting the floor or ceiling? 
+    if (player.y < 0 || player.y > canvas.height) {
+        gameOver();
+    }
+};
+
+
+var draw = function () {
+    // Clear the canvas
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (playing) {
+        gameTick();
+    } else {
+        // Show start menu and wait for click
+        context.font = "20px Verdana bold";
+        context.fillStyle = "purple";
+        context.fillText("click to play", 30, 100);
+        if (mousePressed) {
+            playing = true;
+        }
+    }
+};
+
+setInterval(draw, 1000 / 30);
+
+}//]]>  
+
+</script>
+
+
+</head>
+<body>
+
+    <!-- game canvas -->
+    <canvas id="drawing"></canvas>
+    <!-- scoreboard -->
+    <div id="points">0</div>
+  
+</body>
+
+</html>
+
