@@ -92,20 +92,21 @@ unit(6);
 // path.setAttributeNS(null, "d", d);
 
 // Show moves count
-document.getElementById("info").innerHTML = moveCount + " moves ";
+var info = document.createElement("div");
+info.innerHTML = moveCount + " moves ";
 
 // Make SVG Blob
 window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL || null;
 var svgString = '<svg id="doc" xmlns="http://www.w3.org/2000/svg" version="1.1" width="500" height="500"><path id="turtle" d="';
 svgString += d;
-svgString += '" stroke="black" fill="#EEEEEE" vector-effect="non-scaling-stroke" /></svg>';
+svgString += '" stroke="black" fill="none" vector-effect="non-scaling-stroke" /></svg>';
 var svgBlob = new Blob([svgString], { "type" : "image/svg+xml" });
 var svgBlobURL = URL.createObjectURL(svgBlob);
 
 // Make and add SVG element as img
-var svgElement = new Image();
-svgElement.src = svgBlobURL;
-document.body.appendChild(svgElement);
+var svgImage = new Image();
+svgImage.src = svgBlobURL;
+document.body.appendChild(svgImage);
 
 // Make and add SVG download link
 var downloadLink = document.createElement("a");
@@ -113,7 +114,8 @@ downloadLink.innerHTML = "download";
 downloadLink.setAttribute("target", "_blank");
 downloadLink.setAttribute("href", svgBlobURL);
 downloadLink.setAttribute("download", "turtle");
-document.getElementById("info").appendChild(downloadLink);
+info.appendChild(downloadLink);
+document.body.appendChild(info);
 
 
 }//]]>  
@@ -123,7 +125,7 @@ document.getElementById("info").appendChild(downloadLink);
 
 </head>
 <body>
-  <div id="info"></div>
+  <div><a href="http://jsfiddle.net/forresto/hVE2U/">edit me</a></div>
 </body>
 
 </html>

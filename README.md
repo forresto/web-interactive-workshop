@@ -68,6 +68,23 @@ canvas.ontouchend = function (e) {
   mousePressed = false;
 };
 
+// Keyboard interaction
+var key;
+var keyPressed = false;
+var SPACE = 32;
+var LEFT = 37;
+var UP = 38;
+var RIGHT = 39;
+var DOWN = 40;
+document.onkeydown = function (e) {
+    key = e.keyCode;
+    keyPressed = true;
+};
+document.onkeyup = function (e) {
+    keyPressed = false;
+};
+
+
 /*
   Fill and stroke color are set like any CSS color. For example:
     "red"
