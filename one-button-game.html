@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<!-- Made without libraries! http://softwarestudies.mlog.taik.fi/2013/01/30/processing-not-processing/ -->
+<!-- Made without libraries! https://github.com/forresto/web-interactive-workshop/#processing-not-processing -->
 
 <html>
 <head>
@@ -70,6 +70,9 @@ var setupEnemies = function (count) {
         enemy.x = canvas.width + Math.random() * canvas.width;
         enemy.y = Math.random() * canvas.height;
         enemy.speed = -1;
+        if(Math.random() > 0.5){
+            enemy.isBonus = true;
+        }
         enemies.push(enemy);
     }
 };
@@ -128,14 +131,25 @@ var gameTick = function () {
         // Move this enemy
         enemy.x += enemy.speed;
         // Draw this enemy
-        context.fillStyle = "black";
-        context.fillRect(enemy.x, enemy.y, 5, 5);
+        if(enemy.isBonus) {
+            context.fillStyle = "#FF0000";
+            context.fillRect(enemy.x, enemy.y, 5, 5);            
+        } else {
+            context.fillStyle = "black";
+            context.fillRect(enemy.x, enemy.y, 5, 5);            
+        }
         // Is this enemy within player x?
         if (enemy.x > player.x - 20 && enemy.x < player.x + 20) {
             // And is this enemy within player y?
             if (enemy.y > player.y - 20 && enemy.y < player.y + 20) {
-                // Then game over.
-                gameOver();
+                if(enemy.isBonus) {
+                    points += 100;
+                    enemy.x = canvas.width;
+                    enemy.y = Math.random() * canvas.height;
+                } else {
+                    // Then game over.
+                    gameOver();
+                }
             }
         }
 
