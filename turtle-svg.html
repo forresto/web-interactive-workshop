@@ -94,6 +94,7 @@ unit(6);
 // Show moves count
 var info = document.createElement("div");
 info.innerHTML = moveCount + " moves ";
+document.body.appendChild(info);
 
 // Make SVG Blob
 window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL || null;
@@ -103,19 +104,27 @@ svgString += '" stroke="black" fill="none" vector-effect="non-scaling-stroke" />
 var svgBlob = new Blob([svgString], { "type" : "image/svg+xml" });
 var svgBlobURL = URL.createObjectURL(svgBlob);
 
-// Make and add SVG element as img
-var svgImage = new Image();
-svgImage.src = svgBlobURL;
-document.body.appendChild(svgImage);
+console.log(svgBlob);
 
-// Make and add SVG download link
-var downloadLink = document.createElement("a");
-downloadLink.innerHTML = "download";
-downloadLink.setAttribute("target", "_blank");
-downloadLink.setAttribute("href", svgBlobURL);
-downloadLink.setAttribute("download", "turtle");
-info.appendChild(downloadLink);
-document.body.appendChild(info);
+if (svgBlobURL) {
+  // Make and add SVG element as img
+  var svgImage = new Image();
+  svgImage.src = svgBlobURL;
+  document.body.appendChild(svgImage);
+
+  // Make and add SVG download link
+  var downloadLink = document.createElement("a");
+  downloadLink.innerHTML = "download";
+  downloadLink.setAttribute("target", "_blank");
+  downloadLink.setAttribute("href", svgBlobURL);
+  downloadLink.setAttribute("download", "turtle");
+  info.appendChild(downloadLink);
+} else {
+
+  document.body.innerHTML += svgString;
+
+}
+
 
 
 }//]]>  
