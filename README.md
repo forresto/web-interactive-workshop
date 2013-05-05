@@ -18,7 +18,7 @@ This is not a library: just use the parts you need!
 
 ``` javascript
 /*
- *  The notProcessing <canvas> notLibrary!
+ *  The notProcessing <canvas> notLibrary! 
  */
 
 var canvas = document.getElementById("drawing");
